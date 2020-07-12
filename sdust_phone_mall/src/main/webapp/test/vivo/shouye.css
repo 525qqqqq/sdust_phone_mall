@@ -1,0 +1,38 @@
+
+body .productColor .rightBox .colorDes {
+    width: 100%;
+}
+
+.vp-head .vp-head-menu-series .vp-head-series-wrapper ul li {
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+.vp-head.vp-head-immersive.vp-head-wap .vp-head-wrap-wap .vp-head-common.vp-head-fixed {
+    background: transparent;
+}
+
+.vp-head.vp-head-theme-white.vp-head-immersive .vp-head-wrap-wap .vp-head-wap-common-box {
+    background: transparent
+}
+
+.vp-head .vp-head-site .vp-head-site-navs li {
+    width: 3em;
+}
+
+.vp-head .vp-head-site .vp-head-site-navs li.vp-head-series {
+    width: 3.5em;
+}
+
+.vp-head .vp-head-site {
+    font-family: "HYQiHei-NAV", sans-serif;
+}
+
+@media screen and (max-width: 1200px) {
+    .vp-head .vp-head-site .vp-head-site-navs li {
+        width: 1% !important;
+    }
+}

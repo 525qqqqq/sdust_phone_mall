@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sdust.dao.PhoneMapper" >
+  <resultMap id="BaseResultMap" type="com.sdust.pojo.Phone" >
+    <id column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="pname" property="pname" jdbcType="VARCHAR" />
+    <result column="introduction" property="introduction" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="REAL" />
+    <result column="count" property="count" jdbcType="INTEGER" />
+    <result column="image_url" property="imageUrl" jdbcType="VARCHAR" />
+    <result column="tid" property="tid" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_phone
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sdust.pojo.Phone" >
+    insert into tb_phone (pid, pname, introduction, 
+      price, count, image_url, 
+      tid)
+    values (#{pid,jdbcType=INTEGER}, #{pname,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, 
+      #{price,jdbcType=REAL}, #{count,jdbcType=INTEGER}, #{imageUrl,jdbcType=VARCHAR}, 
+      #{tid,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.sdust.pojo.Phone" >
+    update tb_phone
+    set pname = #{pname,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      price = #{price,jdbcType=REAL},
+      count = #{count,jdbcType=INTEGER},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
+      tid = #{tid,jdbcType=INTEGER}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select pid, pname, introduction, price, count, image_url, tid
+    from tb_phone
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select pid, pname, introduction, price, count, image_url, tid
+    from tb_phone
+  </select>
+</mapper>
