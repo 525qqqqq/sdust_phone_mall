@@ -87,12 +87,12 @@
                         <div class="vp-head-top-user">
                             <a class="vp-user-shopcart" href="">购物车</a>
                             <div v-if="loginUser==null" class="vp-user-login-box" style="opacity: 1;" >
-                                <a class="vp-user-login" href="">登录</a><i>|</i>
-                                <a class="vp-user-register" href="" >注册</a>
+                                <a class="vp-user-login" href="/pages/login.html">登录</a><i>|</i>
+                                <a class="vp-user-register" href="/pages/register.html" >注册</a>
                             </div>
                             <!--登录后就显示这个-->
-                            <div v-else class="vp-user-login-box" style="opacity: 1;display: none">
-                                <a class="vp-user-login" href="">欢迎您: </a><i>|</i>
+                            <div v-else class="vp-user-login-box" style="opacity: 1;">
+                                <a class="vp-user-login" href="">欢迎您:{{loginUser.username}} </a><i>|</i>
                                 <a class="vp-user-register" href="" >退出</a>
                             </div>
                         </div>
@@ -287,6 +287,7 @@
         </div>
 
     </div>
+
 </div>
 </body>
 <script src="/js/axios.min.js"></script>
@@ -296,7 +297,13 @@
         el:"#app",
         data:{
             loginUser:null
-        }
+        },
+        mounted:function(){
+            var loginUser =  window.sessionStorage.getItem("loginUser");
+            if(loginUser!=null){
+                this.loginUser = JSON.parse(loginUser)
+            }
+        },
     })
 </script>
 </html>

@@ -1,9 +1,9 @@
 package com.sdust.service;
 
-import com.qianfeng.dao.UsersMapper;
-import com.qianfeng.pojo.Users;
-import com.qianfeng.util.Md5Util;
-import com.qianfeng.util.ResultVo;
+import com.sdust.dao.UsersMapper;
+import com.sdust.pojo.Users;
+import com.sdust.util.Md5Util;
+import com.sdust.util.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +17,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResultVo regist(Users users) {
+        System.out.println("111111");
         //先根据username查询是否对象是否为空
         Users selectUser = usersMapper.getUserByUsername(users);
         if(selectUser!=null){

@@ -31,4 +31,11 @@
     select uid, username, password
     from tb_users
   </select>
+  <select id="getUserByUsername" resultMap="BaseResultMap">
+      select * from tb_users where username = #{username};
+  </select>
+  <insert id="regist">
+      insert into tb_users (username, password)
+      values ( #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
+  </insert>
 </mapper>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" >
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>注册</title>
+		<!-- Bootstrap core CSS -->
+		<link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<!-- Custom styles for this template -->
+		<link href="/css/signin.css" rel="stylesheet" type="text/css">
+	</head>
+
+	<body class="text-center" style="background-color: #81b0fc">
+    <div id="app">
+		<div class="form-signin" style="width: 500px;background-color: white">
+			<img class="mb-4" src="/image/bootstrap-solid.svg" alt="" width="72" height="72">
+			<h1 class="h3 mb-3 font-weight-normal" >新用户注册</h1>
+
+			<input type="text" v-model="inputUser.username" class="form-control" placeholder="用户名"  >
+
+			<input type="password" v-model="inputUser.password" class="form-control" placeholder="密码" >
+			<div class="checkbox mb-3">
+			</div>
+			<button @click="doRegist" class="btn btn-lg btn-primary btn-block" type="button" >注册</button>
+			<p class="mt-5 mb-3 text-muted">© 2019-2020</p>
+		</div>
+    </div>
+	</body>
+    <script src="/js/vue.js"></script>
+    <script src="/js/axios.min.js"></script>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                loginUser:null,
+                inputUser:{
+                    username:"",
+                    password:""
+                }
+            },
+            methods:{
+                doRegist:function () {
+                    //目标：将用户输入的数据提交到后台，判断校验并添加
+                    //1. 判断用户输入的数据是否合法
+                    var regex = /^1[3|5|7|8]\d{9}$/;     //编写手机号正则
+                    if(!regex.test(this.inputUser.username) || this.inputUser.password==""){//使用正则的test方法返回值为true或者false，判断是否满足正则
+                        alert("注册信息不完善");
+                    }else{
+                        //将用户数据提交到后台
+                        axios.post("/users/regist",this.inputUser)
+                            .then(function (res) {
+                                //根据返回的状态码进行判断
+                                if(res.data.code==0){
+                                    alert(res.data.msg);
+                                    window.location.href="/pages/login.html"
+                                }else{
+                                    alert(res.data.msg);
+                                }
+                            })
+                    }
+                },
+            }
+        })
+    </script>
+</html>

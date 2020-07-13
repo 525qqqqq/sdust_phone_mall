@@ -1,8 +1,8 @@
 package com.sdust.controller;
 
-import com.qianfeng.pojo.Users;
-import com.qianfeng.service.UserService;
-import com.qianfeng.util.ResultVo;
+import com.sdust.pojo.Users;
+import com.sdust.service.UserService;
+import com.sdust.util.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;

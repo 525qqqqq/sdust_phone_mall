@@ -13,4 +13,8 @@ public interface UsersMapper {
     List<Users> selectAll();
 
     int updateByPrimaryKey(Users record);
+
+    Users getUserByUsername(Users users);
+
+    void regist(Users users);
 }
